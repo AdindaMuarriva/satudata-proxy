@@ -1,9 +1,8 @@
-// Proxy transparan untuk Vercel Serverless Functions.
-// File otomatis menangani semua request ke /api/* (nama file
-// "[...path].js" adalah "catch-all route" bawaan Vercel).
+// Proxy transparan. Nama file sengaja dibuat biasa (bukan pola
+// "[...path].js") — semua request /api/* diarahkan ke sini lewat
+// rewrite rule di vercel.json, bukan lewat konvensi penamaan file.
 
 export default async function handler(req, res) {
-  // Izinkan dashboard (dari domain manapun) memanggil proxy ini.
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
